@@ -8,11 +8,11 @@ Portphilio is a web-based portfolio-management app designed to support:
 
 ### Functionality
 
-Individuals or teams upload artifacts to the system. An artifact is a written document, a video, a piece of software, an image, or any other form digital product that was produced by that individual, and which is demonstrative of the type and quality of work of which the individual is capable.
+Individuals or teams upload artifacts to the system. An artifact is a written document, a video, a piece of software, an image, or any other form of digital product that was produced by that individual, and which is demonstrative of the type and quality of work of which the individual is capable.
 
-Individuals or teams may then create portfolios. A portfolio is a curated collection of artifacts, organized around a theme, and accompanied by a narrative explaining how the artifacts relate to the theme. Portfolios tell a richer story than individual artifacts alone, and are designed to be made public so that people may evaluate the talent of the individual or group.
+Individuals or teams may then create portfolios. A portfolio is a curated collection of artifacts, organized around a theme, and accompanied by a narrative explaining how the artifacts relate to the theme. Portfolios tell a richer story than individual artifacts alone, and are designed to be made public so that people (educators, potential employers, collaborators, etc.) may evaluate the talent of the individual or group.
 
-Educators can create rubrics and provide feedback on artifacts and/or portfolios. The role of the educator is to guide individuals and teams in the production of high quality artifacts, and in the weaving of compelling narratives for their portfolios. If the educator is part of a formal institution, such as a degree program within a university, this system also has the added benefit of allowing a cross-section of portfolios to be examined for answering questions about the overall effectiveness and quality of the degree program.
+Educators can create rubrics and provide feedback on artifacts and/or portfolios. The role of the educator is to guide individuals and teams as they produce high quality artifacts, and weave compelling narratives for their portfolios. If the educator is part of a formal institution, such as a degree program within a university, this system also has the added benefit of allowing a cross-section of portfolios to be examined for answering questions about the overall effectiveness and quality of the degree program.
 
 ### License
 
