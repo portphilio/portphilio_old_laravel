@@ -7,4 +7,4 @@ before_install:
 - composer config -g github-oauth.github.com $CI_USER_TOKEN
 before_script:
 - composer self-update
-- composer install --prefer-source --no-interaction --dev
+- composer install --prefer-source --no-interaction
