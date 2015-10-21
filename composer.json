@@ -14,6 +14,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
+        "guzzlehttp/guzzle": "~5.3",
         "cartalyst/sentinel": "2.0.*",
         "cartalyst/sentinel-social": "2.0.*@dev",
         "thomaswelton/laravel-gravatar": "~1.0",
@@ -36,7 +37,8 @@
         "behat/mink": "^1.6",
         "behat/mink-extension": "^2.0",
         "laracasts/behat-laravel-extension": "^1.0",
-        "barryvdh/laravel-debugbar": "dev-master"
+        "barryvdh/laravel-debugbar": "dev-master",
+        "doctrine/dbal": "^2.5"
     },
     "autoload": {
         "classmap": [

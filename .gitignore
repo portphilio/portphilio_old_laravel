@@ -2,5 +2,8 @@
 /node_modules
 Homestead.yaml
 Homestead.json
-.env
+.env*
 auth.json
+/storage/testing.sqlite
+/storage/acceptance.sqlite
+npm-debug.log

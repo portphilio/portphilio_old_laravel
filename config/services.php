@@ -24,15 +24,20 @@ return [
     ],
 
     'ses' => [
-        'key'    => env('SES_KEY'),
+        'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
 
     'stripe' => [
-        'model'  => Portphilio\User::class,
-        'key'    => env('STRIPE_KEY'),
+        'model' => Portphilio\User::class,
+        'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'mailtrap' => [
+        'secret' => env('MAILTRAP_SECRET'),
+        'default_inbox' => env('MAILTRAP_INBOX'),
     ],
 
 ];
