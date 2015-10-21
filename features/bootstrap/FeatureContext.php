@@ -70,6 +70,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
 
     /**
      * @Then an activation email should be sent to :email
+     * @Given an activation email was sent to :email
      */
     public function anActivationEmailShouldBeSentTo($email)
     {
@@ -80,5 +81,23 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
         PHPUnit::assertEquals('Welcome to Portphilio! Activate your account...', $msg['subject']);
         PHPUnit::assertEquals('John Smith', $msg['to_name']);
         PHPUnit::assertEquals('john.smith@gmail.com', $msg['to_email']);
+    }
+
+    /**
+     * @When I go to the activation link
+     */
+    public function iGoToTheActivationLink()
+    {
+        $msg = $this->fetchInbox()[0];
+        preg_match('/href="(.*?)"/', $msg['html_body'], $urls);
+        $this->visitPath($urls[1]);
+    }
+
+    /**
+     * @Given the activation has expired
+     */
+    public function theActivationHasExpired()
+    {
+        Activation::remove(Sentinel::findById(1));
     }
 }

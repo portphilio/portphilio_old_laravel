@@ -23,7 +23,6 @@ class AccountController extends Controller
             function ($m) use ($user) {
                 $m->to($user->email, $user->first_name.' '.$user->last_name)
                   ->subject('Welcome to Portphilio! Activate your account...');
-            /*'accounts.emails.test', [], function ($m) use ($user) { $m->to($user->email)->subject('Hi');*/
         });
 
         return redirect('/');
@@ -50,6 +49,32 @@ class AccountController extends Controller
             }
         } catch (NotActivatedException $e) {
         } catch (ThrottlingException $e) {
+        }
+    }
+
+    public function getActivate($user_id, $activation_code)
+    {
+        if ($user = Sentinel::findById($user_id)) {
+            if ($act = Activation::exists($user) ?: Activation::completed($user)) {
+                if (!$act->completed) {
+                    if (Activation::complete($user, $activation_code)) {
+                        // success!
+                        return redirect('/login')->with('success', 'Thank you! Your Portphilio account is now active. Please login.');
+                    } else {
+                        // activation failed. probably wrong activation code
+                        return redirect('/register')->with('error', 'Ruh-roh! You may have used an invalid activation code. Please double check the link from your activation and try again. If that doesn\'t work, please <a href="/reset">reset your activation code</a>.');
+                    }
+                } else {
+                    // activation was already complete
+                    return redirect('/login')->with('info', 'Your account was already activated.');
+                }
+            } else {
+                // no activation exists; expired --> resend
+                return redirect('/login')->with('warning', 'This activation code expired. Please <a href="/reset">reset it</a>.');
+            }
+        } else {
+            // no user account with that id
+            return redirect('/register')->with('warning', 'Sorry! We couldn\'t find an account with that ID. Please re-register below, or <a href="/contact">let us know about your problem</a>.');
         }
     }
 }

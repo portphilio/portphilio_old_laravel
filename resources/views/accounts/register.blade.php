@@ -11,6 +11,16 @@
 			</ul>
 		</div>
 	@endif
+    @if (session('warning'))
+        <div class="alert alert-warning">
+            <p>{{ session('warning') }}</p>
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-error">
+            <p>{{ session('error') }}</p>
+        </div>
+    @endif
 	<form method="post" action="/register">
 		{!! csrf_field() !!}
 		<label for="username">Username:</label>

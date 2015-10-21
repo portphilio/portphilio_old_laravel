@@ -30,8 +30,8 @@ class User extends EloquentUser implements SluggableInterface
      * @var array
      */
     protected $fillable = [
-           'email',
-           'username',
+        'email',
+        'username',
         'password',
         'last_name',
         'first_name',

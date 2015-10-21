@@ -90,3 +90,29 @@ Feature: Registration
         Then I should be on "/register"
         And I should see "The email has already been taken"
         And I should see "The username has already been taken"
+
+    Scenario: Incorrect activation code
+        Given an activation email was sent to "John Smith <john.smith@gmail.com>"
+        And I am on "/activate/1/thisisthewrongcode"
+        Then I should see "Ruh-roh! You may have used an invalid activation code. Please double check the link from your activation and try again."
+
+    Scenario: Account activation
+        Given an activation email was sent to "John Smith <john.smith@gmail.com>"
+        When I go to the activation link
+        Then I should see "Thank you! Your Portphilio account is now active."
+
+    Scenario: Account duplicate activation
+        Given an activation email was sent to "John Smith <john.smith@gmail.com>"
+        When I go to the activation link
+        And I go to the activation link
+        Then I should see "Your account was already activated."
+
+    Scenario: Attempt to activate an unknown/missing/deleted account
+        Given I am on "/activate/2/unknown"
+        Then I should see "Sorry! We couldn't find an account with that ID"
+
+    Scenario: Activation code is expired
+        Given an activation email was sent to "John Smith <john.smith@gmail.com>"
+        And the activation has expired
+        When I go to the activation link
+        Then I should see "This activation code expired."
