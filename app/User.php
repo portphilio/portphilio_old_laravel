@@ -25,6 +25,20 @@ class User extends EloquentUser implements SluggableInterface
     protected $loginNames = ['email', 'username'];
 
     /**
+     * Array of fillable columns.
+     *
+     * @var array
+     */
+    protected $fillable = [
+           'email',
+           'username',
+        'password',
+        'last_name',
+        'first_name',
+        'permissions',
+    ];
+
+    /**
      * How to generate the user slug.
      *
      * @var array
