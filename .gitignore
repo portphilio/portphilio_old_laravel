@@ -4,6 +4,6 @@ Homestead.yaml
 Homestead.json
 .env*
 auth.json
-/storage/testing.sqlite
-/storage/acceptance.sqlite
+/storage
 npm-debug.log
+.DS_Store

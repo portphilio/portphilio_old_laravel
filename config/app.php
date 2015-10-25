@@ -26,7 +26,7 @@ return [
     |
      */
 
-    'url' => env('APP_URL', 'http://localhost/'),
+    'url' => env('APP_URL', 'http://portphil.io/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -141,6 +141,9 @@ return [
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        Caffeinated\Menus\MenusServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -204,6 +207,9 @@ return [
         'Social' => Cartalyst\Sentinel\Addons\Social\Laravel\Facades\Social::class,
         'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'Menu' => Caffeinated\Menus\Facades\Menu::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
