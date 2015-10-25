@@ -1,12 +1,12 @@
 <?php
-    $url = $base_url.'activate/'.$user->id.'/'.$act->code;
+    $url = $base_url.'reset/'.$user->id.'/'.$reset->code;
 ?><!doctype html>
  <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="initial-scale=1.0" />
 		<meta name="format-detection" content="telephone=no" />
-		<title>Welcome to Portphilio! Activate your account...</title>
+		<title>Portphilio password reset link</title>
 		<style type="text/css">
 		 	body {
 				width: 100%;
@@ -104,9 +104,9 @@
 			    		Hello <?= $user->first_name ?>,
 			    	</td></tr></tbody></table>
 			    	<div style="font-family: Arial, sans-serif; line-height: 20px; color: #444444; font-size: 13px;">
-			      		<b style="color: #777777;">Welcome to Portphilio! We're happy you're here!!</b>
+			      		<b style="color: #777777;">Forgot your password? No worries, it happens.</b>
 			      		<br>
-			      		To activate your Portphilio account, please click this button:
+			      		To reset your Portphilio password, please click this button:
 			    	</div>
 			  	</td></tr></tbody></table>
 			</td></tr></tbody></table>
@@ -116,7 +116,7 @@
 			<table class="table-row" width="450" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-row-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 36px; padding-right: 36px;" valign="top" align="left">
 				<table class="table-col" align="left" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="378" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; width: 378px;" valign="top" align="left">
 			    	<div style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; text-align: center;">
-			      		<a href="<?= $url ?>" style="color: #ffffff; text-decoration: none; margin: 0px; text-align: center; vertical-align: baseline; border: 4px solid #6fb3e0; padding: 4px 9px; font-size: 15px; line-height: 21px; background-color: #6fb3e0;">&nbsp; Activate Your Account &nbsp;</a>
+			      		<a href="<?= $url ?>" style="color: #ffffff; text-decoration: none; margin: 0px; text-align: center; vertical-align: baseline; border: 4px solid #6fb3e0; padding: 4px 9px; font-size: 15px; line-height: 21px; background-color: #6fb3e0;">&nbsp; Reset Your Password &nbsp;</a>
 			    	</div>
 			    	<table class="table-space" height="16" style="height: 16px; font-size: 0px; line-height: 0; width: 378px; background-color: #ffffff;" width="378" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="16" style="height: 16px; width: 378px; background-color: #ffffff;" width="378" bgcolor="#FFFFFF" align="left">&nbsp;</td></tr></tbody></table>
 			  	</td></tr></tbody></table>

@@ -1,7 +1,7 @@
-Feature: Registration
+Feature: Registration and Activation
     In order to become a member of the site
     As a non-member
-    I need the ability to register
+    I need the ability to register and activate a new account
 
     Scenario: Elements on the Registration Form
         Given I am on the "register" page
@@ -14,7 +14,7 @@ Feature: Registration
         And an "input" with "type,name,id" having values "email,email_confirmation,email_confirmation"
         And an "input" with "type,name,id" having values "password,password,password"
         And an "input" with "type,name,id" having values "password,password_confirmation,password_confirmation"
-        And an "input" with "type,name,id" having values "submit,submit,submit"
+        And a "button" with "type,id" having values "submit,submit"
         And every visible input should have a label
 
     Scenario: User is notified of form submission errors
@@ -74,7 +74,7 @@ Feature: Registration
         And I fill in "email_confirmation" with "john.smith@gmail.com"
         And I fill in "password_confirmation" with "I am number 1!"
         And I press "submit"
-        Then I should be on "/"
+        Then I should be on "login"
         And an activation email should be sent to "John Smith <john.smith@gmail.com>"
 
     Scenario: Username and email are already in use
@@ -94,17 +94,17 @@ Feature: Registration
     Scenario: Incorrect activation code
         Given an activation email was sent to "John Smith <john.smith@gmail.com>"
         And I am on "/activate/1/thisisthewrongcode"
-        Then I should see "Ruh-roh! You may have used an invalid activation code. Please double check the link from your activation and try again."
+        Then I should see "Ruh-roh! You may have used an invalid activation code. Please double check the link from your activation email and try again."
 
     Scenario: Account activation
         Given an activation email was sent to "John Smith <john.smith@gmail.com>"
-        When I go to the activation link
+        When I go to the link from the email
         Then I should see "Thank you! Your Portphilio account is now active."
 
     Scenario: Account duplicate activation
         Given an activation email was sent to "John Smith <john.smith@gmail.com>"
-        When I go to the activation link
-        And I go to the activation link
+        When I go to the link from the email
+        And I go to the link from the email
         Then I should see "Your account was already activated."
 
     Scenario: Attempt to activate an unknown/missing/deleted account
@@ -114,5 +114,5 @@ Feature: Registration
     Scenario: Activation code is expired
         Given an activation email was sent to "John Smith <john.smith@gmail.com>"
         And the activation has expired
-        When I go to the activation link
+        When I go to the link from the email
         Then I should see "This activation code expired."

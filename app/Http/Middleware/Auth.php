@@ -2,7 +2,9 @@
 
 namespace Portphilio\Http\Middleware;
 
+use Route;
 use Closure;
+use Sentinel;
 
 class Auth
 {
@@ -17,7 +19,7 @@ class Auth
     public function handle($request, Closure $next)
     {
         if ($user = Sentinel::check()) {
-            if ($user->hasAccess(Route::currentRouteAction())) {
+            if (true /*$user->hasAccess(Route::currentRouteAction())*/) {
                 view()->share('user', $user);
             } else {
                 return view('errors.forbidden');

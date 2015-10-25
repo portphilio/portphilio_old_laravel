@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \Portphilio\Http\Middleware\VerifyCsrfToken::class,
+        \Portphilio\Http\Middleware\MenuMiddleware::class,
     ];
 
     /**
@@ -26,8 +27,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Portphilio\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'auth' => \Portphilio\Http\Middleware\Auth::class,
         'guest' => \Portphilio\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 }
