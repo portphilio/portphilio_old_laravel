@@ -21,13 +21,18 @@ class RegistrationRequest extends Request
      */
     public function rules()
     {
-        return [
+        $rules = [
             'username' => ['required', 'unique:users,username', 'regex:/^[\w]{3,}$/'],
             'first_name' => ['required'],
             'last_name' => ['required'],
             'email' => ['required', 'email', 'unique:users,email', 'confirmed'],
             'password' => ['required', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[^\w\n])[^\n]{11,}$/'],
         ];
+        if ('acceptance' != env('APP_ENV')) {
+            $rules['g-recaptcha-response'] = ['required', 'recaptcha'];
+        }
+
+        return $rules;
     }
 
     /**

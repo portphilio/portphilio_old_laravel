@@ -12,5 +12,27 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.phpUnit();
+    mix.styles([
+        'bootstrap.css',
+        'font-awesome.css',
+        'ace-fonts.css',
+        'ace.css',
+        'accounts.css'
+    ], 'public/assets/css/accounts.css');
+    mix.styles([
+        'bootstrap.css',
+        'font-awesome.css',
+        'ace-fonts.css',
+        'ace.css',
+        'accounts.css'
+    ], 'public/assets/css/portphilio.css');
+    /**/
+    mix.scripts([
+        'bootstrap.js',
+        'ace/ace.js',
+        'ace/ace.sidebar.js',
+        'ace/ace.settings.js',
+        'ace/ace.settings-skin.js'
+    ], 'public/assets/js/dashboard.js');
+    
 });
