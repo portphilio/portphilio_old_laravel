@@ -22,4 +22,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller('users', 'UserController');
 });
 
+Route::controller('oauth', 'OauthController');
 Route::controller('', 'AccountController');

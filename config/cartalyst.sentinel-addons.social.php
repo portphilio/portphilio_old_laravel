@@ -10,11 +10,12 @@
  * This source file is subject to the Cartalyst PSL License that is
  * bundled with this package in the LICENSE file.
  *
- * @package    Sentinel Social
  * @version    2.0.3
+ *
  * @author     Cartalyst LLC
  * @license    Cartalyst PSL
  * @copyright  (c) 2011-2015, Cartalyst LLC
+ *
  * @link       http://cartalyst.com
  */
 
@@ -46,79 +47,79 @@ return [
     'connections' => [
 
         'facebook' => [
-            'driver'     => 'Facebook',
-            'identifier' => '',
-            'secret'     => '',
-            'scopes'     => [
+            'driver' => 'Facebook',
+            'identifier' => env('FACEBOOK_ID'),
+            'secret' => env('FACEBOOK_SECRET'),
+            'scopes' => [
                 'email',
             ],
         ],
 
         'github' => [
-            'driver'     => 'GitHub',
-            'identifier' => '',
-            'secret'     => '',
-            'scopes'     => [
-                'user',
+            'driver' => 'GitHub',
+            'identifier' => env('GITHUB_ID'),
+            'secret' => env('GITHUB_SECRET'),
+            'scopes' => [
+                'user:email',
             ],
         ],
 
         'google' => [
-            'driver'     => 'Google',
+            'driver' => 'Google',
             'identifier' => '',
-            'secret'     => '',
-            'scopes'     => [
+            'secret' => '',
+            'scopes' => [
                 'https://www.googleapis.com/auth/userinfo.profile',
                 'https://www.googleapis.com/auth/userinfo.email',
             ],
         ],
 
         'instagram' => [
-            'driver'     => 'Instagram',
+            'driver' => 'Instagram',
             'identifier' => '',
-            'secret'     => '',
-            'scopes'     => [
+            'secret' => '',
+            'scopes' => [
                 'basic',
             ],
         ],
 
         'linkedin' => [
-            'driver'     => 'LinkedIn',
+            'driver' => 'LinkedIn',
             'identifier' => '',
-            'secret'     => '',
-            'scopes'     => [
+            'secret' => '',
+            'scopes' => [
                 'r_fullprofile',
                 'r_emailaddress',
             ],
         ],
 
         'microsoft' => [
-            'driver'     => 'Microsoft',
+            'driver' => 'Microsoft',
             'identifier' => '',
-            'secret'     => '',
-            'scopes'     => [
+            'secret' => '',
+            'scopes' => [
                 'wl.basic',
-                'wl.emails'
+                'wl.emails',
             ],
         ],
 
         'twitter' => [
-            'driver'     => 'Twitter',
+            'driver' => 'Twitter',
             'identifier' => '',
-            'secret'     => '',
+            'secret' => '',
         ],
 
         'tumblr' => [
-            'driver'     => 'Tumblr',
+            'driver' => 'Tumblr',
             'identifier' => '',
-            'secret'     => '',
+            'secret' => '',
         ],
 
         'vkontakte' => [
-            'driver'     => 'Vkontakte',
+            'driver' => 'Vkontakte',
             'identifier' => '',
-            'secret'     => '',
-            'scopes'     => [],
+            'secret' => '',
+            'scopes' => [],
         ],
 
     ],
