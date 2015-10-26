@@ -129,4 +129,11 @@ class AccountController extends Controller
             return redirect('/reset')->with('error', 'Sorry! We couldn\'t find an account with that ID.');
         }
     }
+
+    public function getLogout()
+    {
+        Sentinel::logout();
+
+        return redirect('/login');
+    }
 }
