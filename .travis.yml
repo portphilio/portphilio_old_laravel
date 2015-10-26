@@ -1,10 +1,10 @@
 language: php
 php:
-- 5.5
-- 5.6
+  - 5.5
+  - 5.6
 before_install:
-- echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
-- composer config -g github-oauth.github.com $CI_USER_TOKEN
+  - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+  - composer config -g github-oauth.github.com $CI_USER_TOKEN
 before_script:
-- composer self-update
-- composer install --prefer-source --no-interaction
+  - composer self-update
+  - composer install --prefer-source --no-interaction
