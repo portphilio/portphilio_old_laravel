@@ -1,5 +1,7 @@
 ## Portphilio
 
+[![Latest Stable Version](https://poser.pugx.org/portphilio/portphilio/v/stable)](https://packagist.org/packages/portphilio/portphilio) [![Total Downloads](https://poser.pugx.org/portphilio/portphilio/downloads)](https://packagist.org/packages/portphilio/portphilio) [![Latest Unstable Version](https://poser.pugx.org/portphilio/portphilio/v/unstable)](https://packagist.org/packages/portphilio/portphilio) [![License](https://poser.pugx.org/portphilio/portphilio/license)](https://packagist.org/packages/portphilio/portphilio)[![Build Status](https://travis-ci.org/portphilio/portphilio.svg?branch=master)](https://travis-ci.org/portphilio/portphilio)
+
 Portphilio is a web-based portfolio-management app designed to support:
 
 * **Individuals** seeking to document and publicize their accomplishments,
