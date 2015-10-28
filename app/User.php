@@ -51,13 +51,33 @@ class User extends EloquentUser implements SluggableInterface
         return Gravatar::src($this->email);
     }
 
+    /**
+     * Gets the user's display name.
+     *
+     * @return string Created by concatenating the first and last names.
+     */
     public function getDisplayNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;
     }
 
+    /**
+     * Gets the slug used for generating URLs.
+     *
+     * @return string The same as the username.
+     */
     public function getSlugAttribute()
     {
         return $this->username;
+    }
+
+    /**
+     * Gets links to OAuth providers, e.g. Facebook.
+     *
+     * @return Portphilio\SentinelLink OAuth information for a 3rd party account.
+     */
+    public function links()
+    {
+        return $this->hasMany('Portphilio\SentinelLink');
     }
 }
