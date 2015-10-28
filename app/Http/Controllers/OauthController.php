@@ -4,7 +4,6 @@ namespace Portphilio\Http\Controllers;
 
 use Social;
 use Illuminate\Http\Request;
-use Cartalyst\Sentinel\Addons\Social\Models\LinkInterface;
 use Cartalyst\Sentinel\Addons\Social\AccessMissingException;
 
 class OauthController extends Controller
@@ -28,24 +27,8 @@ class OauthController extends Controller
     {
         $cb = $request->url();
         try {
-            $user = Social::authenticate('github', $cb, function (LinkInterface $link, $provider, $token, $slug) {
-                    // create a User instance
-                    $user = $link->getUser();
-
-                    // get user data from Github
-                    $data = $provider->getUserDetails($token);
-                    echo '<pre>';
-                    print_r($user->toArray());
-                    print_r($data);
-                    echo '</pre>';
-                    exit;
-                    // use github data to populate user instance
-                    $user->username = $data->nickname;
-                    $user->first_name = $data->first_name;
-
-                    $user->save();
-                }
-            );
+            // NOTE: events handled in Portphilio\Providers\EventSerivceProvider
+            $user = Social::authenticate('github', $cb);
         } catch (AccessMissingException $e) {
             if ($error = $request->input('error_message')) {
                 return redirect('/login')->with('error', $error);
@@ -75,24 +58,8 @@ class OauthController extends Controller
     {
         $cb = $request->url();
         try {
-            $user = Social::authenticate('facebook', $cb, function (LinkInterface $link, $provider, $token, $slug) {
-                    // create a User instance
-                    $user = $link->getUser();
-
-                    // get user data from Facebook
-                    $data = $provider->getUserDetails($token);
-                    echo '<pre>';
-                    print_r($user->toArray());
-                    print_r($data);
-                    echo '</pre>';
-                    exit;
-                    // use github data to populate user instance
-                    $user->username = $data->nickname;
-                    $user->first_name = $data->first_name;
-
-                    $user->save();
-                }
-            );
+            // NOTE: events handled in Portphilio\Providers\EventSerivceProvider
+            $user = Social::authenticate('facebook', $cb);
         } catch (AccessMissingException $e) {
             if ($error = $request->input('error_message')) {
                 return redirect('/login')->with('error', $error);

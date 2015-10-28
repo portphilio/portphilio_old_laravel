@@ -66,8 +66,8 @@ return [
 
         'google' => [
             'driver' => 'Google',
-            'identifier' => '',
-            'secret' => '',
+            'identifier' => env('GOOGLE_ID'),
+            'secret' => env('GOOGLE_SECRET'),
             'scopes' => [
                 'https://www.googleapis.com/auth/userinfo.profile',
                 'https://www.googleapis.com/auth/userinfo.email',
@@ -76,8 +76,8 @@ return [
 
         'instagram' => [
             'driver' => 'Instagram',
-            'identifier' => '',
-            'secret' => '',
+            'identifier' => env('INSTAGRAM_ID'),
+            'secret' => env('INSTAGRAM_SECRET'),
             'scopes' => [
                 'basic',
             ],
@@ -85,8 +85,8 @@ return [
 
         'linkedin' => [
             'driver' => 'LinkedIn',
-            'identifier' => '',
-            'secret' => '',
+            'identifier' => env('LINKEDIN_ID'),
+            'secret' => env('LINKEDIN_SECRET'),
             'scopes' => [
                 'r_fullprofile',
                 'r_emailaddress',
@@ -95,8 +95,8 @@ return [
 
         'microsoft' => [
             'driver' => 'Microsoft',
-            'identifier' => '',
-            'secret' => '',
+            'identifier' => env('MICROSOFT_ID'),
+            'secret' => env('MICROSOFT_SECRET'),
             'scopes' => [
                 'wl.basic',
                 'wl.emails',
@@ -105,20 +105,20 @@ return [
 
         'twitter' => [
             'driver' => 'Twitter',
-            'identifier' => '',
-            'secret' => '',
+            'identifier' => env('TWITTER_ID'),
+            'secret' => env('TWITTER_SECRET'),
         ],
 
         'tumblr' => [
             'driver' => 'Tumblr',
-            'identifier' => '',
-            'secret' => '',
+            'identifier' => env('TUMBLR_ID'),
+            'secret' => env('TUMBLR_SECRET'),
         ],
 
         'vkontakte' => [
             'driver' => 'Vkontakte',
-            'identifier' => '',
-            'secret' => '',
+            'identifier' => env('VKONTAKTE_ID'),
+            'secret' => env('VKONTAKTE_SECRET'),
             'scopes' => [],
         ],
 
