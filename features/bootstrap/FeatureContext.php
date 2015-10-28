@@ -26,6 +26,26 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     /**
+     * @BeforeSuite
+     */
+    public static function createDatabase()
+    {
+        if (!file_exists(storage_path(env('APP_ENV').'.sqlite'))) {
+            touch(storage_path(env('APP_ENV').'.sqlite'));
+        }
+    }
+
+    /**
+     * @AfterSuite
+     */
+    public static function removeDatabase()
+    {
+        if (file_exists(storage_path(env('APP_ENV').'.sqlite'))) {
+            unlink(storage_path(env('APP_ENV').'.sqlite'));
+        }
+    }
+
+    /**
      * @BeforeFeature
      */
     public static function refresh()
