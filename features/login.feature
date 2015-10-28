@@ -26,12 +26,14 @@ Feature: Login and Password Reset
         And I fill in "email_confirmation" with "john.smith@gmail.com"
         And I fill in "password_confirmation" with "I am number 1!"
         And I press "submit"
+        #Then print last response
         Then I should be on "login"
         And an activation email should be sent to "John Smith <john.smith@gmail.com>"
 
     Scenario: The account is activated
         Given an activation email was sent to "John Smith <john.smith@gmail.com>"
         When I go to the link from the email
+        #Then print last response
         Then I should see "Thank you! Your Portphilio account is now active."
 
    Scenario: User is notified of login form submission errors
