@@ -44,9 +44,9 @@ class OauthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAuthorizeFacebook()
+    public function getAuthorize($slug)
     {
-        return redirect(Social::getAuthorizationUrl('facebook', url('oauth/facebook')));
+        return redirect(Social::getAuthorizationUrl($slug, url('oauth/authenticate/'.$slug)));
     }
 
     /**
@@ -54,12 +54,12 @@ class OauthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getFacebook(Request $request)
+    public function getAuthenticate(Request $request, $slug)
     {
         $cb = $request->url();
         try {
             // NOTE: events handled in Portphilio\Providers\EventSerivceProvider
-            $user = Social::authenticate('facebook', $cb);
+            $user = Social::authenticate($slug, $cb);
         } catch (AccessMissingException $e) {
             if ($error = $request->input('error_message')) {
                 return redirect('/login')->with('error', $error);

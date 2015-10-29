@@ -92,7 +92,7 @@
             </div>
             <div class="space-6"></div>
             <div class="social-login center">
-                <a href="/oauth/authorize-facebook" class="btn btn-primary">
+                <a href="/oauth/authorize/facebook" class="btn btn-primary">
                     <i class="ace-icon fa fa-facebook"></i>
                 </a>
                 <a class="btn btn-info">
@@ -101,7 +101,7 @@
                 <a class="btn btn-danger">
                     <i class="ace-icon fa fa-google-plus"></i>
                 </a>
-                <a href="/oauth/authorize-github" class="btn btn-purple">
+                <a href="/oauth/authorize/github" class="btn btn-purple">
                     <i class="ace-icon fa fa-github"></i>
                 </a>
             </div>
