@@ -80,4 +80,37 @@ class User extends EloquentUser implements SluggableInterface
     {
         return $this->hasMany('Portphilio\SentinelLink');
     }
+
+    public static function findMatch($atts)
+    {
+        // convert the $atts into individual variables
+        extract($atts);
+        // try to match on the various properties
+        if (isset($email)) {
+            if ($user = self::where('email', $email)->first()) {
+                return $user;
+            }
+        }
+        if (isset($nickname)) {
+            if ($user = self::where('username', $nickname)->first()) {
+                return $user;
+            }
+        }
+        if (isset($firstName, $lastName)) {
+            if ($user = self::where('first_name', $firstName)->where('last_name', $lastName)->first()) {
+                return $user;
+            }
+        }
+        if (isset($name)) {
+            $users = self::all();
+            foreach ($users as $u) {
+                similar_text($u->display_name, $name, $pct);
+                if ($pct >= 0.9) {
+                    return $user;
+                }
+            }
+        }
+
+        return false;
+    }
 }

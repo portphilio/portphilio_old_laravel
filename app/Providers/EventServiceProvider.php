@@ -3,6 +3,8 @@
 namespace Portphilio\Providers;
 
 use Social;
+use Debugbar;
+use Portphilio\User;
 use Cartalyst\Sentinel\Addons\Social\Models\LinkInterface;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -34,6 +36,24 @@ class EventServiceProvider extends ServiceProvider
             // fires just after new user is registered through OAuth provider (Manager:337)
             // need to create and send a password reset, or redirect to password reset page
             // also should probably send email with credentials
+
+            // get the user created by the registration process
+            $new_user = $link->getUser();
+
+            // try to find a match using the extended properties passed
+            $data = $provider->getUserDetails($token);
+            $data = array_filter(get_object_vars($data));
+            Debugbar::info($data);
+            $old_user = User::findMatch((array) $data);
+
+            // now compare them
+            if (false !== $old_user && is_object($old_user)) {
+                if ($old_user->id !== $new_user->id) {
+                    // we found a match that they didn't
+                    $link->setUser($old_user);
+                    $new_user->delete();
+                }
+            }
         });
 
         Social::existing(function (LinkInterface $link, $provider, $token, $slug) {
@@ -43,6 +63,8 @@ class EventServiceProvider extends ServiceProvider
 
         Social::linking(function (LinkInterface $link, $provider, $token, $slug) {
             // fires after either registered or existing (i.e. in all cases)
+            Debugbar::info($provider->getUserDetails($token));
+
             return redirect('/dashboard')->with('success', 'Welcome to Portphilio!');
         });
     }

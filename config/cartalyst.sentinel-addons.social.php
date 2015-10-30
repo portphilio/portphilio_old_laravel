@@ -88,7 +88,7 @@ return [
             'identifier' => env('LINKEDIN_ID'),
             'secret' => env('LINKEDIN_SECRET'),
             'scopes' => [
-                'r_fullprofile',
+                'r_basicprofile',
                 'r_emailaddress',
             ],
         ],

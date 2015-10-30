@@ -44,7 +44,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "database/migrations"
         ],
         "psr-4": {
             "Portphilio\\": "app/"
