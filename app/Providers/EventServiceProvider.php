@@ -37,19 +37,30 @@ class EventServiceProvider extends ServiceProvider
             // need to create and send a password reset, or redirect to password reset page
             // also should probably send email with credentials
 
-            // get the user created by the registration process
-            $new_user = $link->getUser();
-
             // try to find a match using the extended properties passed
-            $data = $provider->getUserDetails($token);
-            $data = array_filter(get_object_vars($data));
-            Debugbar::info($data);
-            $old_user = User::findMatch((array) $data);
+            $ud = $provider->getUserDetails($token);
+            Debugbar::info($ud);
+            $data = [];
+            foreach (['nickname', 'name', 'firstName', 'lastName'] as $prop) {
+                if (!empty($ud->{$prop})) {
+                    $data[$prop] = $ud->{$prop};
+                }
+            }
+            $old_user = User::findMatch($data);
+            Debugbar::info($old_user);
+
+            // add missing fields to the link object
+            $user->setSocialUrl($link, $ud);
+            $user->setSocialUsername($link, $ud);
 
             // now compare them
             if (false !== $old_user && is_object($old_user)) {
+                // get the user created by the registration process
+                $new_user = $link->getUser();
+
                 if ($old_user->id !== $new_user->id) {
                     // we found a match that they didn't
+                    // TODO: confirm that they are the same accounts!!!
                     $link->setUser($old_user);
                     $new_user->delete();
                 }
@@ -58,12 +69,14 @@ class EventServiceProvider extends ServiceProvider
 
         Social::existing(function (LinkInterface $link, $provider, $token, $slug) {
             // handle linking an OAuth provider to a pre-existing user
-            // Need to handle inappropriate linking, i.e. if the "existing" user was really someone else
+            $data = $provider->getUserDetails($token);
+            $user = $link->getUser();
+            $user->setSocialUrl($link, $data);
+            $user->setSocialUsername($link, $data);
         });
 
         Social::linking(function (LinkInterface $link, $provider, $token, $slug) {
             // fires after either registered or existing (i.e. in all cases)
-            Debugbar::info($provider->getUserDetails($token));
 
             return redirect('/dashboard')->with('success', 'Welcome to Portphilio!');
         });

@@ -17,9 +17,11 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', function () {
-        return view('dashboard');
+        $user = Portphilio\User::first()->toJson();
+
+        return view('dashboard', ['u' => $user]);
     });
-    Route::controller('users', 'UserController');
+    Route::resource('users', 'UserController');
 });
 
 Route::controller('oauth', 'OauthController');

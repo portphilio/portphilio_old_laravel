@@ -35,8 +35,9 @@
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
+		<script src="/assets/js/bootstrap.js"></script>
 		@yield('plugin-scripts')
-		<script src="assets/js/dashboard.js"></script>
+		<!--<script src="/assets/js/dashboard.js"></script>-->
 		@yield('page-scripts')
 	</body>
 </html>

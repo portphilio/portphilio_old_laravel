@@ -43,7 +43,7 @@ class AccountController extends Controller
         try {
             if ($user = Sentinel::authenticate($request->except(['submit', '_token']), $request->input('remember'))) {
                 // success
-                return redirect()->intended('dashboard');
+                return redirect()->intended('/users/'.$user->username);
             } else {
                 // failure
                 return back()->withInput();

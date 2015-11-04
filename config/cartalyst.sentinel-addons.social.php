@@ -53,6 +53,7 @@ return [
             'scopes' => [
                 'email',
             ],
+            'icon' => 'facebook-square',
         ],
 
         'github' => [
@@ -62,6 +63,7 @@ return [
             'scopes' => [
                 'user:email',
             ],
+            'icon' => 'github-square',
         ],
 
         'google' => [
@@ -72,6 +74,7 @@ return [
                 'https://www.googleapis.com/auth/userinfo.profile',
                 'https://www.googleapis.com/auth/userinfo.email',
             ],
+            'icon' => 'google-plus-square',
         ],
 
         'instagram' => [
@@ -81,6 +84,7 @@ return [
             'scopes' => [
                 'basic',
             ],
+            'icon' => 'instagram',
         ],
 
         'linkedin' => [
@@ -91,6 +95,7 @@ return [
                 'r_basicprofile',
                 'r_emailaddress',
             ],
+            'icon' => 'linkedin-square',
         ],
 
         'microsoft' => [
@@ -101,18 +106,21 @@ return [
                 'wl.basic',
                 'wl.emails',
             ],
+            'icon' => 'windows',
         ],
 
         'twitter' => [
             'driver' => 'Twitter',
             'identifier' => env('TWITTER_ID'),
             'secret' => env('TWITTER_SECRET'),
+            'icon' => 'twitter-square',
         ],
 
         'tumblr' => [
             'driver' => 'Tumblr',
             'identifier' => env('TUMBLR_ID'),
             'secret' => env('TUMBLR_SECRET'),
+            'icon' => 'tumblr-square',
         ],
 
         'vkontakte' => [
@@ -120,7 +128,8 @@ return [
             'identifier' => env('VKONTAKTE_ID'),
             'secret' => env('VKONTAKTE_SECRET'),
             'scopes' => [],
-        ],
+            'icon' => 'vk',
+       ],
 
     ],
 

@@ -8,7 +8,7 @@
                 <i class="ace-icon fa fa-home home-icon"></i>
                 <a href="/dashboard">Home</a>
             </li>
-            <li class="active">Dashboard</li>
+            <li class="active">@yield('breadcrumb')</li>
         </ul><!-- /.breadcrumb -->
         <div class="nav-search" id="nav-search">
             <form class="form-search">
