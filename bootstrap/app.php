@@ -41,6 +41,11 @@ $app->singleton(
     Portphilio\Exceptions\Handler::class
 );
 
+$app->singleton(
+    'router',
+    '\Cviebrock\EloquentSluggable\SluggableRouter'
+);
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

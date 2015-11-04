@@ -46,14 +46,23 @@
                 <a href="/oauth/authorize/facebook" class="btn btn-primary">
                     <i class="ace-icon fa fa-facebook"></i>
                 </a>
-                <a class="btn btn-info">
+                <a href="/oauth/authorize/twitter" class="btn btn-info">
                     <i class="ace-icon fa fa-twitter"></i>
                 </a>
-                <a class="btn btn-danger">
+                <a href="/oauth/authorize/google" class="btn btn-danger">
                     <i class="ace-icon fa fa-google-plus"></i>
                 </a>
                 <a href="/oauth/authorize/github" class="btn btn-purple">
                     <i class="ace-icon fa fa-github"></i>
+                </a>
+                <a href="/oauth/authorize/linkedin" class="btn btn-default">
+                    <i class="ace-icon fa fa-linkedin"></i>
+                </a>
+                <a href="/oauth/authorize/instagram" class="btn btn-pink">
+                    <i class="ace-icon fa fa-instagram"></i>
+                </a>
+                <a href="/oauth/authorize/microsoft" class="btn btn-yellow">
+                    <i class="ace-icon fa fa-windows"></i>
                 </a>
             </div>
         </div><!-- /.widget-main -->

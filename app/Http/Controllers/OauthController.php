@@ -67,6 +67,6 @@ class OauthController extends Controller
             abort(404);
         }
 
-        return redirect('/dashboard')->with('success', 'Welcome to Portphilio!');
+        return redirect('/users/'.$user->username)->with('success', 'Welcome to Portphilio!');
     }
 }

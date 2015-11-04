@@ -12,4 +12,17 @@ class SentinelLink extends Link
      * @var string
      */
     protected static $usersModel = 'Portphilio\User';
+
+    public function getColorAttribute()
+    {
+        switch ($this->provider) {
+            case 'facebook': return 'blue';
+            case 'twitter': return 'light-blue';
+            case 'google': return 'red';
+            case 'github': return 'dark';
+            case 'linkedin': return 'blue';
+            case 'instagram': return 'pink';
+            case 'microsoft': return 'orange';
+        }
+    }
 }
