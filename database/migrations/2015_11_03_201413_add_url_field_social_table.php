@@ -22,8 +22,10 @@ class AddUrlFieldSocialTable extends Migration
     public function down()
     {
         Schema::table('social', function (Blueprint $table) {
-            $table->dropColumn('url');
-            $table->dropColumn('username');
+            if ('sqlite' !== env('DB_CONNECTION')) {
+                $table->dropColumn('url');
+                $table->dropColumn('username');
+            }
         });
     }
 }
