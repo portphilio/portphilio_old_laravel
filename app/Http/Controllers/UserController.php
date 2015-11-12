@@ -82,6 +82,7 @@ class UserController extends Controller
             'value.unique' => 'The '.$request->input('name').' must be unique.',
             'value.email' => 'This must be a valid email address.',
         ];
+        $rules = [];
         switch ($request->input('name')) {
             case 'first_name':
             case 'last_name':

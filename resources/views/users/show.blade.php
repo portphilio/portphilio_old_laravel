@@ -39,6 +39,10 @@
                     <div class="profile-info-name">Last Name</div>
                     <div class="profile-info-value"><span class="editable" id="last_name">{{ $u->last_name }}</span></div>
                 </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-name">Gender</div>
+                    <div class="profile-info-value"><span class="editable" id="gender">{{ $u->gender }}</span></div>
+                </div>
             </div>
         </div>
     </div>
@@ -64,6 +68,7 @@
         $('#email').editable({type: 'text', name: 'email'});
         $('#first_name').editable({type: 'text', name: 'first_name'});
         $('#last_name').editable({type: 'text', name: 'last_name'});
+        $('#gender').editable({type: 'text', name: 'gender'});
     })(jQuery);
     </script>
 @endsection
