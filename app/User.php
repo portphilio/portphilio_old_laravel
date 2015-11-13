@@ -69,6 +69,7 @@ class User extends EloquentUser implements SluggableInterface, EntityInterface
          */
 
         Attribute::firstOrCreate(['slug' => 'gender']);
+        Attribute::firstOrCreate(['slug' => 'mobile']);
 
         // call parent constructor
         parent::__construct($attributes);
