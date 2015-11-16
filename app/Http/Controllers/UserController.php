@@ -88,6 +88,7 @@ class UserController extends Controller
             'value.regex' => 'The username must be at least 3 alphanumeric characters long.',
             'value.unique' => 'The '.$request->input('name').' must be unique.',
             'value.email' => 'This must be a valid email address.',
+            'value.mobile' => 'This must be a valid phone number.',
         ];
         $rules = [];
         switch ($request->input('name')) {
@@ -101,6 +102,8 @@ class UserController extends Controller
             case 'email':
                 $rules = ['value' => ['required', 'email', 'unique:users,email']];
                 break;
+            case 'mobile':
+                $rules = ['value' => ['regex:/^\(\d{3}\) \d{3}-\d{4}$/']];
             default:
                 // unknown field
         }
