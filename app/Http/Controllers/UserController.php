@@ -53,6 +53,13 @@ class UserController extends Controller
         }
     }
 
+    public function profile()
+    {
+        $user = session('user');
+
+        return view('users.show', ['u' => $user]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

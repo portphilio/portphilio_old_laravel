@@ -20,6 +20,7 @@ class Auth
     {
         if ($user = Sentinel::check()) {
             if (true /*$user->hasAccess(Route::currentRouteAction())*/) {
+                session(['user' => $user]);
                 view()->share('user', $user);
             } else {
                 return view('errors.forbidden');

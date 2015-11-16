@@ -3,7 +3,6 @@
 @section('plugin-styles')
     <link rel="stylesheet" href="/assets/css/bootstrap-editable.css">
 @endsection
-@section('breadcrumb', 'My Profile')
 @section('page-header', 'My Profile')
 @section('main-content')
     <div class="user-profile row">

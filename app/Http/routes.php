@@ -21,7 +21,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         return view('dashboard', ['u' => $user]);
     });
+    Route::get('users/profile', 'UserController@profile');
     Route::resource('users', 'UserController');
+    Route::resource('artifacts', 'ArtifactController');
 });
 
 Route::controller('oauth', 'OauthController');

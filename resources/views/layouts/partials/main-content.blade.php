@@ -5,10 +5,10 @@
         </script>
         <ul class="breadcrumb">
             <li>
-                <i class="ace-icon fa fa-home home-icon"></i>
-                <a href="/dashboard">Home</a>
+                <i class="ace-icon fa fa-tachometer tachometer-icon"></i>
+                <a href="/dashboard">Dashboard</a>
             </li>
-            <li class="active">@yield('breadcrumb')</li>
+            @include('layouts.partials.breadcrumbs', ['crumbs'=> Menu::get('main')->active()])
         </ul><!-- /.breadcrumb -->
         <div class="nav-search" id="nav-search">
             <form class="form-search">

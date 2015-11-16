@@ -1,5 +1,5 @@
 @foreach($items as $item)
-    <li {!! $item->attributes() !!}>@if($item->link)
+    <li {!! str_replace('opened', 'open', $item->attributes()) !!}>@if($item->link)
             <a @if($item->hasChildren()) class="dropdown-toggle"@endif href="{{ $item->url() }}">
                 @if($item->icon)<i class="menu-icon fa fa-{{ $item->icon }}"></i>@endif
                 <span class="menu-text">

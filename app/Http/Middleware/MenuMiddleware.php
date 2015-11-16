@@ -19,6 +19,9 @@ class MenuMiddleware
     {
         Menu::make('main', function ($menu) {
             $menu->add('Dashboard', 'dashboard')->data('icon', 'tachometer');
+            $artifacts = $menu->add('My Artifacts', 'artifacts')->data('icon', 'files-o');
+            $artifacts->add('Add New Artifact', 'artifacts/create')->data('icon', 'file-o');
+            $menu->add('My Portfolios', 'portfolios')->data('icon', 'folder-open-o');
         });
 
         return $next($request);

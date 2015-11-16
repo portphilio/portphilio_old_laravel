@@ -45,7 +45,8 @@
         "behat/mink-extension": "^2.0",
         "laracasts/behat-laravel-extension": "^1.0",
         "barryvdh/laravel-debugbar": "dev-master",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [
