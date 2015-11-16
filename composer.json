@@ -22,9 +22,14 @@
         "esensi/model": "^0.5.5",
         "intervention/image": "^2.3",
         "greggilbert/recaptcha": "^2.0",
-        "caffeinated/menus": "~2.0"
+        "caffeinated/menus": "~2.0",
+        "cartalyst/attributes": "dev-laravel"
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/morphatic/attributes"
+        },
         {
             "type": "composer",
             "url": "https://packages.cartalyst.com"
@@ -40,7 +45,8 @@
         "behat/mink-extension": "^2.0",
         "laracasts/behat-laravel-extension": "^1.0",
         "barryvdh/laravel-debugbar": "dev-master",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [

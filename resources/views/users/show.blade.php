@@ -3,7 +3,6 @@
 @section('plugin-styles')
     <link rel="stylesheet" href="/assets/css/bootstrap-editable.css">
 @endsection
-@section('breadcrumb', 'My Profile')
 @section('page-header', 'My Profile')
 @section('main-content')
     <div class="user-profile row">
@@ -39,12 +38,21 @@
                     <div class="profile-info-name">Last Name</div>
                     <div class="profile-info-value"><span class="editable" id="last_name">{{ $u->last_name }}</span></div>
                 </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-name">Gender</div>
+                    <div class="profile-info-value"><span class="editable" id="gender">{{ $u->gender }}</span></div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-name">Mobile</div>
+                    <div class="profile-info-value"><span class="editable" id="mobile">{{ $u->mobile }}</span></div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
 @section('plugin-scripts')
     <script src="/assets/js/x-editable/bootstrap-editable.js"></script>
+    <script src="/assets/js/jquery.maskedinput.js"></script>
 @endsection
 @section('page-scripts')
     <script>
@@ -64,6 +72,11 @@
         $('#email').editable({type: 'text', name: 'email'});
         $('#first_name').editable({type: 'text', name: 'first_name'});
         $('#last_name').editable({type: 'text', name: 'last_name'});
+        $('#gender').editable({type: 'text', name: 'gender'});
+        $('#mobile').editable({type: 'text', name: 'mobile'});
+        $('#mobile').on('shown',function(){
+            $(this).data('editable').input.$input.mask('(999) 999-9999');
+        });
     })(jQuery);
     </script>
 @endsection

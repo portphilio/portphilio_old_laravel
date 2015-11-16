@@ -3,14 +3,17 @@
 namespace Portphilio;
 
 use Gravatar;
+use Cartalyst\Attributes\Attribute;
+use Cartalyst\Attributes\EntityTrait;
+use Cartalyst\Attributes\EntityInterface;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cartalyst\Sentinel\Addons\Social\Models\LinkInterface;
 
-class User extends EloquentUser implements SluggableInterface
+class User extends EloquentUser implements SluggableInterface, EntityInterface
 {
-    use SluggableTrait;
+    use SluggableTrait, EntityTrait;
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -18,6 +21,13 @@ class User extends EloquentUser implements SluggableInterface
      * @var array
      */
     protected $hidden = ['password'];
+
+    /**
+     * Array of fields that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
      * Array of login column names.
@@ -46,6 +56,24 @@ class User extends EloquentUser implements SluggableInterface
      * @var array
      */
     protected $sluggable = ['build_from' => 'username', 'save_to' => 'username'];
+
+    /**
+     * Create a new User model instance.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        /*
+         * EAV Attributes
+         */
+
+        Attribute::firstOrCreate(['slug' => 'gender']);
+        Attribute::firstOrCreate(['slug' => 'mobile']);
+
+        // call parent constructor
+        parent::__construct($attributes);
+    }
 
     /**
      * Returns the URL to the avatar image, default size.

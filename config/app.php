@@ -144,6 +144,7 @@ return [
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Caffeinated\Menus\MenusServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Cartalyst\Attributes\Laravel\AttributesServiceProvider::class,
 
         /*
          * Application Service Providers...
