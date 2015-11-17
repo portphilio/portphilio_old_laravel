@@ -202,7 +202,7 @@ class User extends EloquentUser implements SluggableInterface, EntityInterface
     public function setSocialUsername(LinkInterface $link, $data)
     {
         if (empty($link->username) && !empty($data->nickname)) {
-            $link->username = $ud->nickname;
+            $link->username = $data->nickname;
             $link->save();
         }
     }
