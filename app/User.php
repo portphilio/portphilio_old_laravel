@@ -75,6 +75,11 @@ class User extends EloquentUser implements SluggableInterface, EntityInterface
         parent::__construct($attributes);
     }
 
+    public function artifacts()
+    {
+        return $this->hasMany('Portphilio\Artifact');
+    }
+
     /**
      * Returns the URL to the avatar image, default size.
      *
@@ -202,7 +207,7 @@ class User extends EloquentUser implements SluggableInterface, EntityInterface
     public function setSocialUsername(LinkInterface $link, $data)
     {
         if (empty($link->username) && !empty($data->nickname)) {
-            $link->username = $ud->nickname;
+            $link->username = $data->nickname;
             $link->save();
         }
     }
