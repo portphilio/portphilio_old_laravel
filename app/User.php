@@ -75,6 +75,11 @@ class User extends EloquentUser implements SluggableInterface, EntityInterface
         parent::__construct($attributes);
     }
 
+    public function artifacts()
+    {
+        return $this->hasMany('Portphilio\Artifact');
+    }
+
     /**
      * Returns the URL to the avatar image, default size.
      *

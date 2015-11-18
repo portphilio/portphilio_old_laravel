@@ -2,6 +2,7 @@
 
 namespace Portphilio\Http\Controllers;
 
+use Portphilio\Artifact;
 use Illuminate\Http\Request;
 
 class ArtifactController extends Controller
@@ -35,7 +36,19 @@ class ArtifactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'url' => ['required', 'url', 'unique:artifacts,url'],
+            'title' => ['required'],
+        ], [
+            'url.required' => 'The "Link" field is required.',
+            'url.url' => 'Please check the URL in your Link and make sure it is correct.',
+            'url.unique' => 'It looks like you have already added an artifact with this URL.',
+            'title.required' => 'Please supply a meaningful Title for your artifact.',
+        ]);
+
+        $artifact = Artifact::create($request->input());
+
+        return redirect()->action('ArtifactController@edit', [$artifact->id])->with('success', 'New artifact added successfully!');
     }
 
     /**
@@ -47,7 +60,6 @@ class ArtifactController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -59,7 +71,9 @@ class ArtifactController extends Controller
      */
     public function edit($id)
     {
-        //
+        if ($artifact = Artifact::find($id)) {
+            return view('artifacts.edit', ['artifact' => $artifact]);
+        }
     }
 
     /**
@@ -72,7 +86,20 @@ class ArtifactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'url' => ['required', 'url'],
+            'title' => ['required'],
+        ], [
+            'url.required' => 'The "Link" field is required.',
+            'url.url' => 'Please check the URL in your Link and make sure it is correct.',
+            'title.required' => 'Please supply a meaningful Title for your artifact.',
+        ]);
+
+        $artifact = Artifact::find($id);
+        $artifact->fill($request->input());
+        $artifact->save();
+
+        return redirect()->action('ArtifactController@edit', [$artifact->id])->with('success', 'Artifact updated successfully!');
     }
 
     /**
