@@ -7,8 +7,6 @@ class CreateArtifactsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -19,6 +17,9 @@ class CreateArtifactsTable extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('type');
             $table->text('description')->nullable();
+            $table->string('role')->nullable();
+            $table->date('from')->nullable();
+            $table->date('to')->nullable();
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
@@ -27,8 +28,6 @@ class CreateArtifactsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
