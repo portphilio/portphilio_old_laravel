@@ -57,7 +57,7 @@ return [
         ],
 
         'github' => [
-            'driver' => 'GitHub',
+            'driver' => 'Github',
             'identifier' => env('GITHUB_ID'),
             'secret' => env('GITHUB_SECRET'),
             'scopes' => [

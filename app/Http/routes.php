@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('users/profile', 'UserController@profile');
     Route::resource('users', 'UserController');
+    Route::get('artifacts/json', 'ArtifactController@json');
     Route::resource('artifacts', 'ArtifactController');
 });
 

@@ -2,6 +2,7 @@
 @section('title', 'Add Artifact')
 @section('plugin-styles')
     <link rel="stylesheet" href="/assets/css/chosen.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-datepicker3.css">
 @endsection
 @section('page-header', 'Add New Artifact')
 @section('main-content')
@@ -39,6 +40,28 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="from">Date Started</label>
+                    <div class="col-sm-10">
+                        <div class="input-group col-xs-10 col-sm-5">
+                            <input type="text" id="from" name="from" class="form-control date-picker" data-date-format="yyyy-mm-dd" value="{{ old('from') }}"><span class="input-group-addon"><i class="fa fa-calendar bigger-110"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="to">Date Completed</label>
+                    <div class="col-sm-10">
+                        <div class="col-xs-10 col-sm-5 no-padding">
+                        <div class="input-group">
+                            <input type="text" id="to" name="to" class="form-control date-picker" data-date-format="yyyy-mm-dd" value="{{ old('to') }}"><span class="input-group-addon"><i class="fa fa-calendar bigger-110"></i></span>
+                        </div>
+                        </div>
+                        <div class="control-label align-left col-xs-10 col-sm-7">
+                            <input type="checkbox" id="ongoing" class="ace ace-checkbox-2">
+                            <label class="lbl" for="ongoing"> Check here if this is an ongoing activity</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="description">Description</label>
                     <div class="col-sm-10">
                         <input type="hidden" id="description" name="description" value="{{ old('description') }}">
@@ -62,6 +85,7 @@
     <script src="/assets/js/ace/elements.wysiwyg.js"></script>
     <script src="/assets/js/bootbox.js"></script>
     <script src="/assets/js/chosen.jquery.js"></script>
+    <script src="/assets/js/date-time/bootstrap-datepicker.js"></script>
 @endsection
 @section('page-scripts')
     <script>
@@ -131,7 +155,8 @@
                         "Cancel": function(){},
                         "Select": function() {githubRepoSelected();}
                     }
-                };
+                },
+                ongoing = {{ !empty(old('from')) && empty(old('to')) ? 'true' : 'false'}};
 
             $('#google-drive-picker').on('click', function() {
                 $('#url').prop('readonly',true).prop('placeholder','Set Automatically');
@@ -194,6 +219,32 @@
                     }
                 });
             });
+            $('.date-picker').datepicker({autoclose: true, todayHighlight: true})
+             .next().on(ace.click_event, function() {$(this).prev().focus();});
+            $('#from').on('change', function() {
+                var from = $('#from').val(),
+                    to   = $('#to').val();
+                if ('' == to || new Date(to).getTime() < new Date(from).getTime()) {
+                    $('#to').val(from);
+                }
+                $('#to').datepicker('setStartDate', from);
+            });
+            $('#ongoing').on('click', function() {
+                var to = $('#to').get(0);
+                if ($(to).prop('disabled')) {
+                    $(to).prop('disabled', false);
+                    $(to).prop('placeholder', '');
+                    $(to).val($('#from').val());
+                } else {
+                    $(to).prop('disabled', true);
+                    $(to).val('');
+                    $(to).prop('placeholder', 'Ongoing...');
+                }
+            });
+            if (ongoing) {
+                $('#ongoing').prop('checked', true);
+                $('#to').prop('disabled', true).prop('placeholder', 'Ongoing...');
+            }
         })(jQuery);
     </script>
     <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=handleApiLoad"></script>
