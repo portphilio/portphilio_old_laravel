@@ -14,4 +14,10 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
     ];
+
+    public function __construct(Illuminate\Contracts\Encryption\Encrypter $encrypter)
+    {
+        parent::__construct($encrypter);
+        $this->except[] = config('auto-deploy.route');
+    }
 }
