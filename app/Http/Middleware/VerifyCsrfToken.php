@@ -3,6 +3,7 @@
 namespace Portphilio\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
+use Illuminate\Contracts\Encryption\Encrypter;
 
 class VerifyCsrfToken extends BaseVerifier
 {
@@ -15,7 +16,7 @@ class VerifyCsrfToken extends BaseVerifier
         //
     ];
 
-    public function __construct(Illuminate\Contracts\Encryption\Encrypter $encrypter)
+    public function __construct(Encrypter $encrypter)
     {
         parent::__construct($encrypter);
         $this->except[] = config('auto-deploy.route');
