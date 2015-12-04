@@ -95,7 +95,7 @@ return [
     |
      */
 
-    'log' => 'single',
+    'log' => 'daily',
 
     /*
     |--------------------------------------------------------------------------
@@ -145,6 +145,7 @@ return [
         Caffeinated\Menus\MenusServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Cartalyst\Attributes\Laravel\AttributesServiceProvider::class,
+        Morphatic\AutoDeploy\AutoDeployServiceProvider::class,
 
         /*
          * Application Service Providers...

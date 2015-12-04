@@ -14,7 +14,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "guzzlehttp/guzzle": "~5.3",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
         "cartalyst/sentinel": "2.0.*",
         "cartalyst/sentinel-social": "2.0.*@dev",
         "thomaswelton/laravel-gravatar": "~1.0",
@@ -23,7 +23,8 @@
         "intervention/image": "^2.3",
         "greggilbert/recaptcha": "^2.0",
         "caffeinated/menus": "~2.0",
-        "cartalyst/attributes": "dev-laravel"
+        "cartalyst/attributes": "dev-laravel",
+        "morphatic/laravel-auto-deploy": "dev-master"
     },
     "repositories": [
         {
